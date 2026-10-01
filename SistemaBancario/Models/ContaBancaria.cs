@@ -1,6 +1,6 @@
 ﻿namespace SistemaBancario.Models
 {
-    // CLASSE ABSTRATA - NÃO PODE SER INSTÂNCIADA, SOMENTE HERDADA (PROTEGE OS DADOS, NÃO PODENDEOSER ACESSADA DIRETAMENTE)
+    // CLASSE ABSTRATA - NÃO PODE SER INSTÂNCIADA, SOMENTE HERDADA (PROTEGE OS DADOS, NÃO PODENDO SER ACESSADA DIRETAMENTE)
     public abstract class ContaBancaria
     {
         private string _numeroConta;
@@ -29,7 +29,8 @@
         public List<string> ExtratoTransacoes { get; set; } = new List<string>();
 
         // PROTECTED: SOMENTE CLASSES FILHAS ACESSAM
-        // CONSTRUTOR SERÁ CHAMADO SEMPRE
+        // É O CONSTRUTOR QUE SERÁ CHAMADO SEMPRE
+        // NOME DO CONSTRUTOR == NOME DA CLASSE
 
         protected ContaBancaria(string numeroConta, decimal saldoInicial, string nomeTitular)
         {
@@ -51,6 +52,8 @@
         }
 
         // MÉTODO ABSTRATO: OBRIGA SUA CLASSES FILHAS A DETERMINAR SUAS PRÓPRIAS PARTICULARIDADES DE SAQUE
+
+        public abstract bool Sacar(decimal valor);
 
     }
 }
